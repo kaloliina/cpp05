@@ -3,16 +3,12 @@
 int main(void)
 {
 	try {
-	Bureaucrat buddy("karo", 0);
-	if (buddy.getGrade() < 1)
+	Bureaucrat buddy("karo", 1);
+	std::cout << buddy << std::endl;
+	}
+	catch (std::exception & e)
 	{
-		throw Bureaucrat();
+		std::cout << e.what();
 	}
-	}
-	catch (const Bureaucrat& e)
-	{
-		std::cout << "e.whaaaaaat();";
-	}
-
 }
 

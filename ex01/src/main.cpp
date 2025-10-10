@@ -1,5 +1,7 @@
 
 #include "../include/Form.hpp"
+
+/*Tests, you could also add the check if something is already signed*/
 int main(void)
 {
 	try
@@ -25,7 +27,7 @@ int main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
+
 	try {
 	std::cout << "HERE" << std::endl;
 	Bureaucrat buddy("karo", 1);

@@ -1,8 +1,34 @@
 
-#include "../include/AForm.hpp"
+#include "../include/Bureaucrat.hpp"
+
+//Make tests!
 int main(void)
 {
-//tests tests, also test to make sure this is surely abstact class
+	try
+	{
+		Bureaucrat buds("kartsa", 20);
+		Bureaucrat budsa(buds);
+		std::cout << buds << std::endl;
+		std::cout << budsa << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	try {
+	std::cout << "HERE" << std::endl;
+	Bureaucrat buddy("karo", 1);
+	std::cout << buddy << std::endl;
+	buddy.incrementGrade();
+	buddy.incrementGrade();
+	std::cout << "do we get here" << std::endl;
+	buddy.decrementGrade();
+	}
+	catch (std::exception & e)
+	{
+		std::cout << e.what();
+	}
 }
 
 /*Test cases for...

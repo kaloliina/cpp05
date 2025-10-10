@@ -2,7 +2,7 @@
 #include "../include/AForm.hpp"
 int main(void)
 {
-//tests tests, also test to make sure this is surely abstact class
+//tests
 }
 
 /*Test cases for...

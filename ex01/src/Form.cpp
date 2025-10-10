@@ -35,7 +35,6 @@ int Form::getGradeExec() const
 	return _gradeExec;
 }
 
-/*Could add a check if form is already signed*/
 void Form::beSigned(Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() <= _gradeReq)

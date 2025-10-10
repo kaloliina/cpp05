@@ -7,6 +7,7 @@ public:
 	Intern(const Intern& copy) = delete;
 	Intern &operator=(const Intern& src) = delete;
 	~Intern() = default;
+
 	class AForm* makeForm(std::string formName, std::string formTarget);
 	class FormNotFoundException : public std::exception
 	{

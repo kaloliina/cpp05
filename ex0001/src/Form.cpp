@@ -5,10 +5,6 @@ Form::Form(std::string name, int gradeReq, int gradeExec) : _name(name), _gradeR
 	_isSigned = false;
 }
 
-Form::Form(const Form& copy) : Form(copy._name, copy._gradeReq, copy._gradeExec)
-{
-}
-
 const char* Form::GradeTooLowException::what() const noexcept
 {
 	return "Form grade too HIIIIGH";

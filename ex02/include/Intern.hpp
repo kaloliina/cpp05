@@ -1,14 +1,15 @@
 #pragma once
 #include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-//Look again at these
 class Intern
 {
 public:
 	Intern() = default;
-	Intern(std::string name, int grade) = delete;
-	Intern(const Intern& copy);
+	Intern(const Intern& copy) = delete;
 	Intern &operator=(const Intern& src) = delete;
 	~Intern() = default;
-	class Form* makeForm(std::string formName, std::string formTarget);
+	class AForm* makeForm(std::string formName, std::string formTarget);
+	class FormNotFoundException : public std::exception
+	{
+		const char* what() const noexcept override;
+	};
 };

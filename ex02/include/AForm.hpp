@@ -12,7 +12,7 @@ private:
 public:
 	AForm();
 	AForm(std::string name, int gradeReq, int gradeExec);
-	AForm(const AForm& copy);
+	AForm(const AForm& copy) = default;
 	AForm &operator=(const AForm& src) = delete;
 	~AForm() = default;
 
@@ -27,6 +27,10 @@ public:
 		const char* what() const noexcept override;
 	};
 	class GradeTooLowException : public std::exception
+	{
+		const char* what() const noexcept override;
+	};
+	class FormNotSignedException : public std::exception
 	{
 		const char* what() const noexcept override;
 	};

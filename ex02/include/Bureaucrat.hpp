@@ -17,7 +17,7 @@ private:
 public:
 	Bureaucrat() = delete;
 	Bureaucrat(std::string name, int grade);
-	Bureaucrat(const Bureaucrat& copy);
+	Bureaucrat(const Bureaucrat& copy) = default;
 	Bureaucrat &operator=(const Bureaucrat& src) = delete;
 	~Bureaucrat() = default;
 	std::string getName() const;

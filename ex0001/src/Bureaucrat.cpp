@@ -8,13 +8,6 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 	if (_grade > 150)
 		throw GradeTooLowException();
 }
-/*I'm not entirely sure why this works if its markes as default.
-If its markes as default, does copy constructor call default constructor? But in our case
-default constructor has been deleted..?*/
-Bureaucrat::Bureaucrat(const Bureaucrat& copy) : Bureaucrat(copy._name, copy._grade)
-{
-
-}
 
 std::string Bureaucrat::getName() const
 {

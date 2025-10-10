@@ -11,7 +11,7 @@ private:
 public:
 	Form();
 	Form(std::string name, int gradeReq, int gradeExec);
-	Form(const Form& copy);
+	Form(const Form& copy) = default;
 	Form &operator=(const Form& src) = delete;
 	~Form() = default;
 

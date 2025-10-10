@@ -5,11 +5,6 @@ AForm::AForm(std::string name, int gradeReq, int gradeExec) : _name(name), _grad
 	_isSigned = false;
 }
 
-AForm::AForm(const AForm& copy) : AForm(copy._name, copy._gradeReq, copy._gradeExec)
-{
-
-}
-
 const char* AForm::GradeTooLowException::what() const noexcept
 {
 	return "AForm grade too HIIIIGH";
@@ -18,6 +13,11 @@ const char* AForm::GradeTooLowException::what() const noexcept
 const char* AForm::GradeTooHighException::what() const noexcept
 {
 	return "AForm grade too Lo-o-o-owwww";
+}
+
+const char* AForm::FormNotSignedException::what() const noexcept
+{
+	return "Form has not been signed";
 }
 
 std::string AForm::getName() const

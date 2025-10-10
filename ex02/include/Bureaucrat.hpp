@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-class Form;
+class AForm;
 
 /*
 - Remember that you have combined the first and the second exercise into this so remember to separate them
@@ -24,7 +24,8 @@ public:
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
-	void signForm(Form& form);
+	void signForm(AForm& form);
+	void executeForm(AForm const& form);
 	class GradeTooHighException : public std::exception
 	{
 		const char* what() const noexcept override;

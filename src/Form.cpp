@@ -11,12 +11,12 @@ Form::Form(const Form& copy) : Form(copy._name, copy._gradeReq, copy._gradeExec)
 
 const char* Form::GradeTooLowException::what() const noexcept
 {
-	return "GradeTooLOUUUWW";
+	return "Form grade too HIIIIGH";
 }
 
 const char* Form::GradeTooHighException::what() const noexcept
 {
-	return "GradeTooHIIIIEEEGH";
+	return "Form grade too Lo-o-o-owwww";
 }
 
 std::string Form::getName() const
@@ -39,7 +39,7 @@ int Form::getGradeExec() const
 	return _gradeExec;
 }
 
-//what if the form is already signed?
+/*Could add a check if form is already signed*/
 void Form::beSigned(Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() <= _gradeReq)
@@ -48,9 +48,13 @@ void Form::beSigned(Bureaucrat& bureaucrat)
 		throw Form::GradeTooLowException();
 }
 
-//need to make sure the boolean is in understandable format
 std::ostream& operator<<(std::ostream& os, Form& form)
 {
-	os << form.getName() << "\n" << form.getSignstatus() << "\n" << form.getGradeReq() << "\n" << form.getGradeExec();
+	std::string line;
+	if (form.getSignstatus() == true)
+		line = "Yes";
+	else
+		line = "No";
+	os << form.getName() << ", form signed: " << line << ".\nSigning requirement: " << form.getGradeReq() << ".\nExecution requirement: " << form.getGradeExec() << ".\n";
 	return os;
 }

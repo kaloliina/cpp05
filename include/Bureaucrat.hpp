@@ -3,10 +3,12 @@
 
 class Form;
 
-//Remember that this is combining the first and second exercise!
-//Once you are ready to divide it into two folders, remove the signForm from
-//this one
-//Could I basically set the copy constructor to also default..?
+/*
+- Remember that you have combined the first and the second exercise into this so remember to separate them
+and remove the signForm and beSigned functions etc..
+- You could have another look and check that const is used when needed as well as references.
+- Also could I basically set the copy constructor to default..?
+*/
 class Bureaucrat
 {
 private:
@@ -18,6 +20,11 @@ public:
 	Bureaucrat(const Bureaucrat& copy);
 	Bureaucrat &operator=(const Bureaucrat& src) = delete;
 	~Bureaucrat() = default;
+	std::string getName() const;
+	int getGrade() const;
+	void incrementGrade();
+	void decrementGrade();
+	void signForm(Form& form);
 	class GradeTooHighException : public std::exception
 	{
 		const char* what() const noexcept override;
@@ -26,11 +33,6 @@ public:
 	{
 		const char* what() const noexcept override;
 	};
-	std::string getName() const;
-	int getGrade() const;
-	void incrementGrade();
-	void decrementGrade();
-	void signForm(Form& form);
 };
+
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
-//and why do we need separate functions for incrementation and decrement..?

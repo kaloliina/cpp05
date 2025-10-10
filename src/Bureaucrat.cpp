@@ -8,7 +8,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 	if (_grade > 150)
 		throw GradeTooLowException();
 }
-
+/*I'm not entirely sure why this works if its markes as default.
+If its markes as default, does copy constructor call default constructor? But in our case
+default constructor has been deleted..?*/
 Bureaucrat::Bureaucrat(const Bureaucrat& copy) : Bureaucrat(copy._name, copy._grade)
 {
 
@@ -34,24 +36,18 @@ void Bureaucrat::incrementGrade()
 void Bureaucrat::decrementGrade()
 {
 	_grade = _grade + 1;
-	if (_grade < 1)
+	if (_grade > 150)
 		throw GradeTooLowException();
 }
-/*These might need to be default strings*/
+
 const char* Bureaucrat::GradeTooHighException::what() const noexcept
 {
-	return "GradeTooHIIIIGH";
+	return "Bureaucrat grade too HIIIIGH";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const noexcept
 {
-	return "GradeTooLo-o-o-owwww";
-}
-
-std::ostream& operator<<(std::ostream& os, const Bureaucrat &bureaucrat)
-{
-	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
-	return os;
+	return "Bureaucrat grade too Lo-o-o-owwww";
 }
 
 void Bureaucrat::signForm(Form& form)
@@ -66,4 +62,10 @@ void Bureaucrat::signForm(Form& form)
 		return ;
 	}
 	std::cout << this->_name << " signed " << form.getName() << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat &bureaucrat)
+{
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
+	return os;
 }

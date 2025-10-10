@@ -1,8 +1,6 @@
 #pragma once
-#include <iostream>
 #include "Bureaucrat.hpp"
 
-//Same here, I could put copy constructor to default..?
 class Form
 {
 private:
@@ -30,7 +28,6 @@ public:
 	{
 		const char* what() const noexcept override;
 	};
-
 };
 
 std::ostream& operator<<(std::ostream& os, Form& form);

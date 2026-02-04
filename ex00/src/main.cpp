@@ -1,52 +1,80 @@
 
 #include "../include/Bureaucrat.hpp"
 
-//Make tests!
 int main(void)
 {
+	std::cout << "--------Regular test--------" << std::endl;
 	try
 	{
-		Bureaucrat buds("kartsa", 20);
-		Bureaucrat budsa(buds);
-		std::cout << buds << std::endl;
-		std::cout << budsa << std::endl;
+		Bureaucrat person1("Twilight Sparkle", 20);
+		Bureaucrat person2(person1); //copy constructor check
+		std::cout << person1 << std::endl; //overload operator
+		std::cout << person2 << std::endl;
+		person1.decrementGrade();
+		person2.incrementGrade();
+		std::cout << person1 << std::endl;
+		std::cout << person2 << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
-	try {
-	std::cout << "HERE" << std::endl;
-	Bureaucrat buddy("karo", 1);
-	std::cout << buddy << std::endl;
-	buddy.incrementGrade();
-	buddy.incrementGrade();
-	std::cout << "do we get here" << std::endl;
-	buddy.decrementGrade();
+	std::cout << "--------Grade too high test--------" << std::endl;
+	try
+	{
+		Bureaucrat person1("Pinkie Pie", 1);
+		std::cout << person1 << std::endl;
+		person1.incrementGrade();
+		person1.incrementGrade(); //we should not get here because error is thrown already
 	}
 	catch (std::exception & e)
 	{
-		std::cout << e.what();
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Initial grade too high test--------" << std::endl;
+	try
+	{
+		Bureaucrat person1("Raindow Dash", 0);
+		std::cout << person1 << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Initial grade too low test--------" << std::endl;
+	try
+	{
+		Bureaucrat person1("Spike", 151);
+		std::cout << person1 << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Grade too low test--------" << std::endl;
+	try
+	{
+		Bureaucrat person1("Rarity", 148);
+		std::cout << person1 << std::endl;
+		person1.decrementGrade();
+		std::cout << person1 << std::endl;
+		person1.decrementGrade();
+		std::cout << person1 << std::endl;
+		person1.decrementGrade();
+		std::cout << person1 << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Negative number test--------" << std::endl;
+	try
+	{
+		Bureaucrat person1("Applejack", -8);
+		std::cout << person1 << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
 	}
 }
-
-/*Test cases for...
---00--
-- Grade too high
-- Grade too low
-- Grade just on the edges
-- Regular tests that work
-- Overflow? Negative..
-- Test case for incrementing or decrementing and if reaching out of bounds
-- Making sure the output stream works
-
---01--
-- If form cannot be signed because of grade
-- If form is being signed again? (Do we need an error that its already signed...)
-- If bureaucrats grade is just on the edge
-- Regular tests
-- Making sure the output stream works
-
-- Remember to check that you are writing things to STDERR!
-*/

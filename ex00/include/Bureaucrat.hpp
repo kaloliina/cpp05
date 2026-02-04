@@ -4,8 +4,8 @@
 class Bureaucrat
 {
 private:
-	const std::string _name;
-	int _grade;
+	const std::string	_name;
+	int					_grade;
 public:
 	Bureaucrat() = delete;
 	Bureaucrat(std::string name, int grade);
@@ -13,10 +13,10 @@ public:
 	Bureaucrat &operator=(const Bureaucrat& src) = delete;
 	~Bureaucrat() = default;
 
-	std::string getName() const;
-	int getGrade() const;
-	void incrementGrade();
-	void decrementGrade();
+	std::string	getName() const;
+	int			getGrade() const;
+	void		incrementGrade();
+	void		decrementGrade();
 	class GradeTooHighException : public std::exception
 	{
 		const char* what() const noexcept override;

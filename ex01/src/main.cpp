@@ -1,67 +1,126 @@
 
 #include "../include/Form.hpp"
 
-/*Tests, you could also add the check if something is already signed*/
 int main(void)
 {
+	std::cout << "--------Form Sign Requirement too high test--------" << std::endl;
 	try
 	{
-		Form buds("formi", 20, 20);
-		Form budsa(buds);
-		std::cout << buds << std::endl;
-		std::cout << budsa << std::endl;
+		Form form("Important", 0, 50);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-
+	std::cout << "--------Form Sign Requirement too low test--------" << std::endl;
 	try
 	{
-		Bureaucrat buds("kartsa", 20);
-		Bureaucrat budsa(buds);
-		std::cout << buds << std::endl;
-		std::cout << budsa << std::endl;
+		Form form("Important", 151, 50);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-
-	try {
-	std::cout << "HERE" << std::endl;
-	Bureaucrat buddy("karo", 1);
-	std::cout << buddy << std::endl;
-	buddy.incrementGrade();
-	buddy.incrementGrade();
-	std::cout << "do we get here" << std::endl;
-	buddy.decrementGrade();
-	Form formie("form", 50, 50);
-	std::cout << formie << std::endl;
-	buddy.signForm(formie);
-	}
-	catch (std::exception & e)
+	std::cout << "--------Form Execute Requirement too high test--------" << std::endl;
+	try
 	{
-		std::cout << e.what();
+		Form form("Important", 50, 0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Form Execute Requirement too low test--------" << std::endl;
+	try
+	{
+		Form form("Important", 50, 151);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Regular Form Test--------" << std::endl;
+	try
+	{
+		Form form("Important", 50, 50);
+		std::cout << form << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Succesful sign Test--------" << std::endl;
+	try
+	{
+		Bureaucrat bureaucrat("Karoliina", 50);
+		std::cout << bureaucrat << std::endl;
+		Form form("Important", 50, 50);
+		std::cout << form << std::endl;
+		bureaucrat.signForm(form);
+		std::cout << form << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Succesful sign Test--------" << std::endl;
+	try
+	{
+		Bureaucrat bureaucrat("Karoliina", 1);
+		std::cout << bureaucrat << std::endl;
+		Form form("Important", 50, 50);
+		std::cout << form << std::endl;
+		bureaucrat.signForm(form);
+		std::cout << form << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Failed sign Test--------" << std::endl;
+	try
+	{
+		Bureaucrat bureaucrat("Karoliina", 51);
+		std::cout << bureaucrat << std::endl;
+		Form form("Important", 50, 50);
+		std::cout << form << std::endl;
+		bureaucrat.signForm(form);
+		std::cout << form << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Multiple sign Test--------" << std::endl;
+	try
+	{
+		Bureaucrat bureaucrat("Karoliina", 1);
+		std::cout << bureaucrat << std::endl;
+		Form form("Important", 50, 50);
+		std::cout << form << std::endl;
+		bureaucrat.signForm(form);
+		std::cout << form << std::endl;
+		bureaucrat.signForm(form);
+		std::cout << form << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	std::cout << "--------Multiple Failed sign Test--------" << std::endl;
+	try
+	{
+		Bureaucrat bureaucrat("Karoliina", 51);
+		std::cout << bureaucrat << std::endl;
+		Form form("Important", 50, 50);
+		std::cout << form << std::endl;
+		bureaucrat.signForm(form);
+		std::cout << form << std::endl;
+		bureaucrat.signForm(form);
+		std::cout << form << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
 	}
 }
-
-/*Test cases for...
---00--
-- Grade too high
-- Grade too low
-- Grade just on the edges
-- Regular tests that work
-- Overflow? Negative..
-- Test case for incrementing or decrementing and if reaching out of bounds
-- Making sure the output stream works
-
---01--
-- If form cannot be signed because of grade
-- If form is being signed again? (Do we need an error that its already signed...)
-- If bureaucrats grade is just on the edge
-- Regular tests
-- Making sure the output stream works
-
-- Remember to check that you are writing things to STDERR!
-*/

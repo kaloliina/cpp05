@@ -4,23 +4,23 @@
 class AForm
 {
 private:
-	const std::string _name;
-	bool	_isSigned;
-	const int _gradeReq;
-	const int _gradeExec;
+	const std::string	_name;
+	bool				_isSigned;
+	const int			_gradeSign;
+	const int			_gradeExec;
 public:
-	AForm();
-	AForm(std::string name, int gradeReq, int gradeExec);
+	AForm() = delete;
+	AForm(std::string name, int gradeSign, int gradeExec);
 	AForm(const AForm& copy) = default;
 	AForm &operator=(const AForm& src) = delete;
-	~AForm() = default;
+	virtual ~AForm() = default;
 
-	std::string getName() const;
-	bool getSignstatus() const;
-	int getGradeReq() const;
-	int getGradeExec() const;
-	void beSigned(Bureaucrat& bureaucrat);
-	virtual void execute(Bureaucrat const& executor) const = 0;
+	std::string		getName() const;
+	bool			getSignstatus() const;
+	int				getGradeSign() const;
+	int				getGradeExec() const;
+	void			beSigned(Bureaucrat& bureaucrat);
+	virtual void	execute(Bureaucrat const & executor) const = 0;
 	class GradeTooHighException : public std::exception
 	{
 		const char* what() const noexcept override;

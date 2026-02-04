@@ -1,9 +1,6 @@
 #include "../include/Intern.hpp"
-#include "../include/ShrubberyCreationForm.hpp"
-#include "../include/RobotomyRequestForm.hpp"
-#include "../include/PresidentialPardonForm.hpp"
 
-class AForm* Intern::makeForm(std::string formName, std::string formTarget)
+AForm* Intern::makeForm(std::string formName, std::string formTarget)
 {
 	int match = -1;
 	std::string strings[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
@@ -25,16 +22,19 @@ class AForm* Intern::makeForm(std::string formName, std::string formTarget)
 		case 0:
 		{
 			form = new ShrubberyCreationForm(formTarget);
+			std::cout << "Intern creates " << form->getName() << std::endl;
 			break ;			
 		}
 		case 1:
 		{
 			form = new RobotomyRequestForm(formTarget);
+			std::cout << "Intern creates " << form->getName() << std::endl;
 			break ;			
 		}
 		case 2:
 		{
 			form = new PresidentialPardonForm(formTarget);
+			std::cout << "Intern creates " << form->getName() << std::endl;
 			break ;			
 		}
 	}

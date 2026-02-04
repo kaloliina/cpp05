@@ -1,5 +1,9 @@
 #pragma once
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
 class Intern
 {
 public:
@@ -8,7 +12,7 @@ public:
 	Intern &operator=(const Intern& src) = delete;
 	~Intern() = default;
 
-	class AForm* makeForm(std::string formName, std::string formTarget);
+	AForm*	makeForm(std::string formName, std::string formTarget);
 	class FormNotFoundException : public std::exception
 	{
 		const char* what() const noexcept override;

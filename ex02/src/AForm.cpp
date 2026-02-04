@@ -1,18 +1,22 @@
 #include "../include/AForm.hpp"
 
-AForm::AForm(std::string name, int gradeReq, int gradeExec) : _name(name), _gradeReq(gradeReq), _gradeExec(gradeExec)
+AForm::AForm(std::string name, int gradeSign, int gradeExec) : _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
+	if (_gradeSign < 1 || _gradeExec < 1)
+		throw GradeTooHighException();
+	if (_gradeSign > 150 || _gradeExec > 150)
+		throw GradeTooLowException();
 	_isSigned = false;
 }
 
 const char* AForm::GradeTooLowException::what() const noexcept
 {
-	return "Form grade too HIIIIGH";
+	return "Grade too Lo-o-o-owwww";
 }
 
 const char* AForm::GradeTooHighException::what() const noexcept
 {
-	return "Form grade too Lo-o-o-owwww";
+	return "Grade too HIIIIGH";
 }
 
 const char* AForm::FormNotSignedException::what() const noexcept
@@ -30,9 +34,9 @@ bool AForm::getSignstatus() const
 	return _isSigned;
 }
 
-int AForm::getGradeReq() const
+int AForm::getGradeSign() const
 {
-	return _gradeReq;
+	return _gradeSign;
 }
 
 int AForm::getGradeExec() const
@@ -42,7 +46,7 @@ int AForm::getGradeExec() const
 
 void AForm::beSigned(Bureaucrat& bureaucrat)
 {
-	if (bureaucrat.getGrade() <= _gradeReq)
+	if (bureaucrat.getGrade() <= _gradeSign)
 		_isSigned = true;
 	else
 		throw AForm::GradeTooLowException();
@@ -55,6 +59,6 @@ std::ostream& operator<<(std::ostream& os, AForm& AForm)
 		line = "Yes";
 	else
 		line = "No";
-	os << AForm.getName() << ", form signed: " << line << ".\nSigning requirement: " << AForm.getGradeReq() << ".\nExecution requirement: " << AForm.getGradeExec() << ".\n";
+	os << AForm.getName() << ", Form signed: " << line << ".\nSigning requirement: " << AForm.getGradeSign() << ".\nExecution requirement: " << AForm.getGradeExec() << ".";
 	return os;
 }

@@ -4,13 +4,13 @@
 class PresidentialPardonForm : public AForm
 {
 private:
-	std::string _target;
+	std::string	_target;
 public:
 	PresidentialPardonForm() = delete;
 	PresidentialPardonForm(std::string target);
 	PresidentialPardonForm(const PresidentialPardonForm& copy) = default;
-	PresidentialPardonForm &operator=(const PresidentialPardonForm& src) = default;
+	PresidentialPardonForm &operator=(const PresidentialPardonForm& src) = delete;
 	~PresidentialPardonForm() = default;
 
-	void execute(Bureaucrat const& executor) const;
+	void	execute(Bureaucrat const& executor) const;
 };
